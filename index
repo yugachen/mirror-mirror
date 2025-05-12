@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>容貌焦慮小測驗（前五題）</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <h1 class="text-center mb-4">🌸 容貌焦慮小測驗（情境版・前五題）</h1>
+
+    <form id="quizForm">
+      <!-- 題目1 -->
+      <div class="mb-3">
+        <label class="form-label">1. 早晨洗臉後發現鼻子有新痘痘，會因此心情變差或想遮掩嗎？</label>
+        <div>
+          <input type="radio" name="q1" value="1" required> 是
+          <input type="radio" name="q1" value="0"> 否
+        </div>
+      </div>
+
+      <!-- 題目2 -->
+      <div class="mb-3">
+        <label class="form-label">2. 視訊會議中，因為臉色不好或角度怪而想關掉鏡頭嗎？</label>
+        <div>
+          <input type="radio" name="q2" value="1" required> 是
+          <input type="radio" name="q2" value="0"> 否
+        </div>
+      </div>
+
+ <!-- 題目3 -->
+ <div class="mb-3">
+ <label class="form-label">3. 試穿衣服時，因覺得身材不好看而放棄購買嗎？</label>
+ <div>
+ <input type="radio" name="q3" value="1" required> 是
+ <input type="radio" name="q3" value="0"> 否
+ </div>
+ </div>
+
+ <!-- 題目4 -->
+ <div class="mb-3">
+ <label class="form-label">4. 因為素顏穿得隨便，拍大合照時想拒絕嗎？</label>
+ <div>
+ <input type="radio" name="q4" value="1" required> 是
+ <input type="radio" name="q4" value="0"> 否
+ </div>
+ </div>
+
+ <!-- 題目5 -->
+ <div class="mb-3">
+ <label class="form-label">5. 社群平台被標註角度不佳的照片，會想刪除或隱藏嗎？</label>
+ <div>
+ <input type="radio" name="q5" value="1" required> 是
+ <input type="radio" name="q5" value="0"> 否
+ </div>
+ </div>
+
+ <button type="submit" class="btn btn-primary">提交測驗</button>
+ </form>
+
+
+ <div id="result" class="mt-4"></div>
+ </div>
+
+ <script>
+ document.getElementById('quizForm').addEventListener('submit', function(event) {
+ event.preventDefault();
+ let score = 0;
+ for (let i = 1; i <= 5; i++) {
+ let radios = document.getElementsByName('q' + i);
+ for (let radio of radios) {
+ if (radio.checked) {
+ score += parseInt(radio.value);
+ }
+ }
+ }
+ let resultText = '';
+ if (score <= 1) {
+ resultText = '🌱 外貌焦慮極低：幾乎不受影響。';
+ } else if (score <= 3) {
+ resultText = '🌷 輕度焦慮：偶爾會受外貌影響情緒。';
+ } else if (score === 4) {
+ resultText = '🌼 中度焦慮：外貌已成為自我壓力來源之一。';
+ } else {
+ resultText = '🌹 高度焦慮：建議進一步關注自我價值與情緒調適。';
+ }
+ document.getElementById('result').innerHTML = `<div class="alert alert-info">你的得分是 <strong>${score}</strong> 分。<br>${resultText}<br><font color="red">後續會有相關動畫呈現，得分計算會消失，問答測試在手機網頁上呈現，動畫互動在大螢幕上呈現。</font></div>`;
+ });
+ </script>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
